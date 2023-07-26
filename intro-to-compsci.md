@@ -16,19 +16,28 @@
 - [Primary Curriculum](#primary-curriculum)
   - [Maths](#maths)
   - [Programming Languages](#programming-languages)
+    - [Programming Fundamentals](#programming-fundamentals)
+      - [Data Types](#data-types)
+      - [Variables](#variables)
+      - [Functions](#functions)
+      - [Flow Control](#flow-control)
+      - [Looping](#looping)
+        - [Coding Examples in Common Languages](#coding-examples-in-common-languages)
     - [C](#c)
     - [C++](#c-1)
     - [Python](#python)
-    - [Ruby](#ruby)
     - [Java](#java)
     - [JavaScript](#javascript)
-    - [HTML](#html)
-    - [CSS](#css)
     - [Rust](#rust)
+    - [Ruby](#ruby)
+  - [Other Langauges](#other-langauges)
+    - [HTML](#html)
+    - [Markdown](#markdown)
+    - [CSS](#css)
   - [Computer Architecture](#computer-architecture)
   - [Operating System](#operating-system)
   - [Data Structures and Algorithms](#data-structures-and-algorithms)
-    - [Complexity](#complexity)
+    - [Complexity (Intermediate)](#complexity-intermediate)
       - [Space Complexity](#space-complexity)
       - [Time Complexity](#time-complexity)
     - [Data Structures](#data-structures)
@@ -47,6 +56,7 @@
       - [Merge Sort](#merge-sort)
       - [Heap Sort](#heap-sort)
       - [Radix Sort](#radix-sort)
+- [Glossary:](#glossary)
 
 
 # What can you do with Computer Science
@@ -67,22 +77,89 @@
 
 # Primary Curriculum
 ## Maths
-- Algebra (Comprehension)
-- Linear Algebra (Only Basics Necessary)
-- Geometry (Only Basics Necessary)
-- Calculus 1,2,3 (Optional)
-- Differential Equations (Optional)
+- Algebra (Level of Understanding: Comprehension)
+- Linear Algebra (Level of Understanding: Only Basics Necessary)
+- Geometry (Level of Understanding: Only Basics Necessary)
+- Calculus 1,2,3 (Level of Understanding: Optional)
+- Differential Equations (Level of Understanding: Optional)
 
 ## Programming Languages
+### Programming Fundamentals
+1. Data Types
+2. Variables
+3. Functions
+4. Flow Control
+5. Looping
+
+#### Data Types
+- Defintion: 
+
+#### Variables
+
+#### Functions
+
+#### Flow Control
+
+#### Looping
+
+##### Coding Examples in Common Languages
 ### C
+```c
+#include <stdio.h>
+
+int main(){
+  printf("Hello World");
+
+  return 0;
+}
+```
+
 ### C++
+```cpp
+#include <iostream>
+
+int main(){
+  std::cout << "Hello World!";
+  return 0;
+}
+```
+
+
 ### Python
-### Ruby
+```python
+print("Hello, World")
+```
+
 ### Java
+```java
+class HelloWorld{
+  public static void main(String args[]){
+    System.out.println("Hello, World");
+  }
+}
+```
+
 ### JavaScript
-### HTML
-### CSS
+```js
+console.log('Hello, World')
+```
+
 ### Rust
+```rust
+fn main() -> Result<_,Box<dyn Error>>{
+  println!("Hello World!");
+}
+```
+
+### Ruby
+```ruby
+puts "Hello World"
+```
+
+## Other Langauges
+### HTML
+### Markdown
+### CSS
 
 ## Computer Architecture
 
@@ -90,8 +167,16 @@
 
 ## Data Structures and Algorithms
 
-### Complexity
+### Complexity (Intermediate)
 #### Space Complexity
+- Definition: the amount of memory necessary to successfully compute an instance of a computational problem as a function of the size of its input
+  - __Memory__: the amount of RAM (random access memory)
+  - __Necessary__: required
+  - __Instance__: a single run of the computational problem
+  -  __"function of the size of its input"__: the amount of memory required to solve the problem will vary with size of the input (dataset)
+- Space complexity is not 
+
+
 #### Time Complexity
 
 ### Data Structures
@@ -111,3 +196,9 @@
 #### Merge Sort
 #### Heap Sort
 #### Radix Sort
+
+# Glossary:
+- RAM (random access memory): a form of dynamic memory that can be directly accessed by the CPU
+- Dynamic Memory: memory that is erased when the computer is powered off
+- Static Memory: memory that persists through power cycles of a computer
+- Power Cycle: turning off the machine and powering the machine back on
