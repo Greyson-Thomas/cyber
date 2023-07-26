@@ -23,13 +23,13 @@
       - [Flow Control](#flow-control)
       - [Looping](#looping)
         - [Coding Examples in Common Languages](#coding-examples-in-common-languages)
-    - [C](#c)
-    - [C++](#c-1)
-    - [Python](#python)
-    - [Java](#java)
-    - [JavaScript](#javascript)
-    - [Rust](#rust)
-    - [Ruby](#ruby)
+          - [C](#c)
+          - [C++](#c-1)
+          - [Python](#python)
+          - [Java](#java)
+          - [JavaScript](#javascript)
+          - [Rust](#rust)
+          - [Ruby](#ruby)
   - [Other Langauges](#other-langauges)
     - [HTML](#html)
     - [Markdown](#markdown)
@@ -103,7 +103,7 @@
 #### Looping
 
 ##### Coding Examples in Common Languages
-### C
+###### C
 ```c
 #include <stdio.h>
 
@@ -114,7 +114,7 @@ int main(){
 }
 ```
 
-### C++
+###### C++
 ```cpp
 #include <iostream>
 
@@ -125,12 +125,12 @@ int main(){
 ```
 
 
-### Python
+###### Python
 ```python
 print("Hello, World")
 ```
 
-### Java
+###### Java
 ```java
 class HelloWorld{
   public static void main(String args[]){
@@ -139,19 +139,19 @@ class HelloWorld{
 }
 ```
 
-### JavaScript
+###### JavaScript
 ```js
 console.log('Hello, World')
 ```
 
-### Rust
+###### Rust
 ```rust
 fn main() -> Result<_,Box<dyn Error>>{
   println!("Hello World!");
 }
 ```
 
-### Ruby
+###### Ruby
 ```ruby
 puts "Hello World"
 ```
