@@ -18,9 +18,24 @@
       - [Internet Infrastructure](#internet-infrastructure)
   - [Makes Internet Possible and What Exists on it](#makes-internet-possible-and-what-exists-on-it)
     - [Networking](#networking)
-      - [Communication Models](#communication-models)
-        - [ISO Model](#iso-model)
+      - [Computer Communication Models](#computer-communication-models)
+        - [OSI (Open Systems Interconection) Model](#osi-open-systems-interconection-model)
+          - [Bottom Layer - Layer 1: Physical - Media Layer](#bottom-layer---layer-1-physical---media-layer)
+          - [Layer 2: Datalink - Media Layer](#layer-2-datalink---media-layer)
+          - [Layer 3: Network - Media Layer](#layer-3-network---media-layer)
+          - [Layer 4: Transport - Host Layer](#layer-4-transport---host-layer)
+          - [Layer 5: Session - Host Layer](#layer-5-session---host-layer)
+          - [Layer 6: Presentation - Host Layer](#layer-6-presentation---host-layer)
+          - [Top Layer - Layer 7: Application - Host Layer](#top-layer---layer-7-application---host-layer)
+          - [Explicit Transportation Process:](#explicit-transportation-process)
+        - [TCP/IP Model](#tcpip-model)
+          - [Top Layer 1: Application](#top-layer-1-application)
+          - [Layer 2: Transport](#layer-2-transport)
+          - [Layer 3: Network Access](#layer-3-network-access)
+          - [Layer 4: Network Interface](#layer-4-network-interface)
+          - [Layer 5: Hardware](#layer-5-hardware)
       - [Types and Topology of Networks](#types-and-topology-of-networks)
+      - [Computer Network Architectures](#computer-network-architectures)
       - [Virtual Networks](#virtual-networks)
     - [The Cloud](#the-cloud)
       - [SaaS (Software as a Service)](#saas-software-as-a-service)
@@ -142,11 +157,46 @@
 
 
 ### Networking
-#### Communication Models
-##### ISO Model
+#### Computer Communication Models
+- Computer Communication Models serve to standardize the coordination of communication between networked computing systems
+
+##### OSI (Open Systems Interconection) Model
+- Each layer in the model have well-defined functions, and the methods of each layer communicate and interact with those adjacent to it (when necesary)
+
+###### Bottom Layer - Layer 1: Physical - Media Layer
+###### Layer 2: Datalink - Media Layer
+###### Layer 3: Network - Media Layer
+###### Layer 4: Transport - Host Layer
+###### Layer 5: Session - Host Layer
+###### Layer 6: Presentation - Host Layer
+###### Top Layer - Layer 7: Application - Host Layer
+
+###### Explicit Transportation Process:
+  1. The data that is intended to be transmitted is composed at the topmost layer (Application Layer) into a PDU (Protocol Data Unit)
+  2. The PDU is passed to the next layer (Presentation Layer) where it is referred to as a SDU (Service Data Unit)
+  3. The SDU at the presentation layer is "serviced" and is concatenated with a header, a footer, or both. The concatenation of the header and footer turn the SDU into a Presentation Layer PDU and is then transmitted to the Session Layer.
+  4. The Presentation Layer PDU is referred to as an SDU in the Session layer, where it is "serviced" and is now referred to as a Session PDU and is transmitted to the Transport Layer.
+  5. The Session Layer PDU is now referred to as an SDU in the Transport layer, where it is "service" and is now referred to as a Transport Layer PDU and is then transmitted to the Network Layer
+  6. The Transport Layer PDU is now referred to as an SDU in the Network Layer, where it is "serviced" and is now referred to as a Network Layer PDU and is then transmitted to the Datalink Layer
+  7. The Network Layer PDU is now referred to as an SDU in the Datalink layer, where it is "serviced" as is now referred to as a Datalink layer PDU and is then transmitted to the Physical Layer
+  8. The Datalink PDU is now referred to as an SDU in the Physical Layer, where it is "serviced" and transmitted to the receiving device
+  9. The receiving device receives the transmitting machine's Physical Layer PDU
+  10. The receiving device's Physical Layer strips the transmitting device's Physical Layer PDU of its "serviced" headers and footers, which at the point of reception is referred to as an SDU
+  11. The received SDU is passed from the bottom layer back to the top on the receiving device and at each layer the associated "serviced" headers and footers from the transmitting device are stripped, until the application layer, at which point the data can be consumed
+
+##### TCP/IP Model
+###### Top Layer 1: Application
+###### Layer 2: Transport 
+###### Layer 3: Network Access
+###### Layer 4: Network Interface
+###### Layer 5: Hardware  
+ 
 
 #### Types and Topology of Networks
 
+#### Computer Network Architectures
+- Client-Server
+- P2P (Peer-to-Peer)
 #### Virtual Networks
 
 
@@ -181,3 +231,5 @@
 - IP transit:
 - Peering: 
 - Private Peering: 
+- Protocol Data Unit: 
+- Service Data Unit:
