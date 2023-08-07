@@ -18,6 +18,18 @@
       - [Internet Infrastructure](#internet-infrastructure)
   - [Makes Internet Possible and What Exists on it](#makes-internet-possible-and-what-exists-on-it)
     - [Networking](#networking)
+      - [Hardware](#hardware)
+        - [Cable](#cable)
+        - [Router](#router)
+          - [Router Functions](#router-functions)
+        - [Switch (DataLink Layer)](#switch-datalink-layer)
+          - [Switch Options](#switch-options)
+        - [Hub (Physical Layer)](#hub-physical-layer)
+        - [Wireless Access Point (WAP)](#wireless-access-point-wap)
+        - [DNS Servers](#dns-servers)
+          - [Types of DNS Queries](#types-of-dns-queries)
+          - [Types of DNS Records](#types-of-dns-records)
+          - [Types of Caching](#types-of-caching)
       - [Computer Communication Models](#computer-communication-models)
         - [OSI (Open Systems Interconection) Model](#osi-open-systems-interconection-model)
           - [Bottom Layer - Layer 1: Physical - Media Layer](#bottom-layer---layer-1-physical---media-layer)
@@ -122,7 +134,7 @@
 
 ### Who Maitains the Internet
 #### Internet Technology Standards
-- ISOC (Internet SOciety):
+- ISOC (Internet Society):
 - IAB (Internet Architecture Board):
 - IESG (Internet Engineering Group):
 - IETF (Internet Engineering Steering Group):
@@ -157,6 +169,168 @@
 
 
 ### Networking
+#### Hardware
+##### Cable
+- Purpose: Carry signals
+- Coaxial Cables: standard of 10 Mbps Ethernet cables
+  - Stiffness of thinnet and thicknet cables made maintainence difficult
+- Twisted Pair Cables: 10 Mbps Ethernet (Cat 3) to 100 Mbps Ethernet (Cat 5(e)), up to 10 Gbps
+  - 8 wires wound together to minimize electromagnetic interference
+  - __Types__: Unshielded Twisted Pair and Shielded Twisted Pair
+- Fiber Optics Cables: strands of glass and pulses of light 
+  - Particularly useful in WANs
+  - Types: Single-Mode (100BaseBX standard) and Multimode (100BaseSX standard)
+    - Single-mode tends towards higher bandwidth
+- USB (Universal Serial Bus) Cables: connect computer with peripheral device (use twisted-pair wiring)
+  - Dongle: connect Ethernet cable to USB port indirectly
+
+##### Router
+- Purpose: Connect computers and other devices, allowing them to speak with each other while analyzing data that traverses across them
+- __Wired Router__: share data over cables and create local area networks (LANs)
+- __Wireless Router__: share data wireless and create wireless local area networks (WLANs)
+- __Edge Router__: wired or wireless router that distributes data packets between one or mroe networks but not within a network 
+  - Placed at the edge or boundary of networks (e.g. connecting to ISPs or other organizations networks)
+  - Purpose: keep owning networking communicating with other networks 
+- __Core Router__: wire or wireless network distribute data packets within networks, but not between networks 
+  - Purpose: do the majority of data transferring 
+- __Virtual Router__: software that allow computers and servers to operate like routers 
+  - Can offer more flexibility than physical devices (e.g. can scale as necessary)
+
+###### Router Functions
+- Forwarding: Check packet headers and checksums, look for appropriate port based on routing table and then forwards to port
+- Routing: determining the best path for the packet to reach the destination 
+- Network Address Translation (NAT): translations between different IP address ranges 
+  - Allows devices on a private network to access the internet using a single public IP address
+- Security: can be configured with firewalls
+- Quality of Service: can prioritize network traffic based on the type of data being transmitted
+- Virtual Private Network (VPN) connectivity: Can be configured to allow remote users to connect securely to the network
+
+##### Switch (DataLink Layer)
+- Purpose: connect devices within a network and forward data packets to and from those device (only sends data to the device it is intended for) and can filter data (filter = identify the destination of the packet with routing table)
+- __Modular Switch__: allow for the addition of expansion modules as needed
+  - Expansion Module Examples: Firewalls, Wireless Connectivity, Power Supplies, Cooling Fans
+  - Increased flexibility
+- __Fixed Configuration Switch__: fixed number of ports and are not typically expandable
+  - __Unmanaged Switch__: provide basic connectivity with no necesssary configuration 
+  - __Smart Switch__: offer some management and segmentation, quality fo service and security capabiltiies
+    - Deployed at edges of networks
+  - __Managed Switch__: best application experience, highest level of security, more precise control and management of the network, greatest scalability
+    - Deployed as aggregation/access switches in very large network or core switches in smaller networks 
+  
+###### Switch Options
+- Switch Speeds: defines the throughput (rate data is transmitted) speed the switch is capable of  
+- Number of Ports: defines the number of devices that can be physically attached to the switch 
+- Power-Over-Eternet (PoE): power devices with ethernet 
+- Stacking Capabilities: defines whether the switch can be connected with other switch to increase the network capacity 
+  - Consider for redundancy
+
+##### Hub (Physical Layer)
+- Purpose: Used to connect multiple devices in a network - possessing multiple ports, unlike a switch the ports are non-intelligent and cannot indentify the destination of the port so the packet is broadcasted over all ports with a connected device
+- __Active Hub__: possess power supply for regenerating weak signals and then sends signal to all ports
+- __Passive Hub__: used to connect signals from different network cables (no computerized element)
+  - Do not process or perform signal regeneration 
+- __Intelligent Hub__: performs similar work as active hubs but possesses a monitoring unit - Management Information Base(MIB)
+  - Management Information Base: helps in analyzing and troubleshooting network problem 
+
+##### Wireless Access Point (WAP)
+- Purpose: allows wireless-capable devices to connect to a wired network
+  - Can also be used to extend the signal range and strength of your wireless network to provide complete wireless coverage
+- __Root Access Point__: access point is connected directly to a wired LAN, providing a connection point for wireless users
+- __Repeater Access Point__: extends the range of existing infrastructure or overcome an obstacle that blocks radio communication 
+  - Forwards traffic between wiresless users and the wired network by sending data to either another repeater or an access point that is connected to the wire network 
+- __Bridge__: establishes a wireless link with a non-root bridge and traffic is passed over the wireless link to the wired network
+- __Workgroup Bridge__: access points in a workgroup can associate to other access points as clients and provide network connections for devices connected to Ethernet ports
+- __Central Unit in an **All-Wireless Network**__: access point acts as a hub that links all stations together - focal point for communication
+
+##### [DNS Servers](https://www.cloudflare.com/learning/dns/what-is-dns/)
+- Purpose: 
+- __Recursive Resolver__: intemediary between client and DNS nameserver and the first stop in a DNS query 
+  - Process:
+    - Receives DNS Query from Client
+    - Checks Cached Data
+      - If requested data is has been cached the recursive resolver will send that data to the client
+      - If request data has NOT been cached the recursive resolver will send a request to a root nameserver, then TLD nameserver and lastly to an authoritative nameserver
+    - After receiving the response from the authoritative namesever the recursive resolver sends the response to the client and caches it for future queries
+  - Alternate Process
+    - If resolver has NS records for authoritative nameserver they are queried directly (bypasses lookups to root and TLD servers)
+    - If resolver does not have NS records it will query TLD servers and skips the root server
+    - IF resolver does not have records for TLD server the root servers are queried (typically occurring after a cache purge)
+- __Root Nameserver__: accepts queries from recursive resolvers, which includes a domain name
+  - Process:
+    - Root Nameserver receives request from recursive resolver
+    - Root Nameserver responds with directions to a TLD Nameserver based on the domain extension (e.g. .com, .net) 
+  - 13 types of rootname servers
+  - Use Anycast Routing
+- __TLD Nameserver__: maintains information for all domain names that share a common domain extension
+  - Process: 
+    - Receive query from recursive resolver
+    - TLD Nameserver responds with direction to an Authoritative Nameserver
+  - Generic TLDs: .com, .org, .net, .edu, .gov
+  - Country Code TLDs: .uk, .us, .ru, .jp
+- __Authoritative Nameserver__: contains information specific to the domain name it serves and can provide the recursive resolver with the IP address of that server found in the DNS A record or a CNAME record (can satify queries without needing to query another source for non-subdomains)
+  - Process:
+    - Authoritative Nameserver receives query from recursive resolver
+    - Authoritative Nameserver responds:
+      - Responds with A Record: contains the IP address
+      - Responds with CNAME Record:
+        - Provides the recursive resolver with an alias domain
+        - Recursive resolver performs a whole new DNS lookup with the alias
+
+###### Types of DNS Queries
+- __Recursive__: client requires that a DNS server will respond to the client with either the requested resource record or an error message if the resolver can't find the record
+- __Iterative__: client will allow the server to return the best answer it can 
+  - If no match: server returns a referral to an authoritative server for a lower level of the domain namespace - client will then make a query to the referral address - process continues until either error or timeout 
+- __Non-Recursive__: client queries a server for a record that is has access to either because it's authoritative for the record or the record exists inside of its cache  
+
+###### Types of DNS Records
+- __A (Address) Record__: most fundamental DNS Record, primarily used for matching a domain name to an IPv4 address - enables a user's device to connect with and load a website, without the user memorizing and typing in the actual IP address 
+  - Contains only IPv4 address
+- __AAAA Record__: enable client devices to learn the IP address for a domain name
+  - Contains only IPv6 
+- __CNAME Record__: used in lieu of an A record, when a domain or subdomain is an alias of another domain - points from an alias domain to a "canonical" domain
+  - Must point to a domain NOT an IP address
+  - Frequently used for subdomains
+  - Does NOT have to resolve to the same website as the domain it points to
+    - Must only point to the same IP address as the root domain
+    - The webserver will handle the URL accordingly which could point to an entire differnet file on the webserver
+  - CNAME records can point to other CNAME records - requires multiple DNS lookups 
+- __MX Record__: directs emails to a mail server - indicates how email messages should be routed relative to SMTP (Simple Mail Transport Protocol)
+  - Have an order of precedence - lower value = more
+  - Cannot point to CNAME - must point to A or AAAA record
+- __TXT Record__: [TXT-Record](https://www.cloudflare.com/learning/dns/dns-records/dns-txt-record/)
+- __NS (Nameserver) Record__: indicates which DNS server is authortiative for a specific domain, which tells the internet where to go to find a domain's IP
+  - Never point to a CNMAE
+  - Domain can have multiple NS records which can indicate priamry and secondary nameservers
+    - Nameserver: stores all DNS records for a domain 
+    - Multiple nameservers increase network reliability (typically one primary and multiple nameserver - updating primary nameserver will trigger an update of secondary nameservers)
+- __SOA (Start of Authority) Record__: stores information about a domain or zone (e.g. email of admin, when domain was updated last, how long the server shoudl wait between refreshes)
+  - zone = area of control over namespace 
+  - Parts of SOA Record:
+    - MNAME: name of primary nameserver for the zone
+    - REFRESH: length of time secondary servers should wait before asking primary servers for the SOA record to see if it has been updated
+    - RETRY: length of time a server should wait for asking an unresponsive primary nameserver for an update again
+    - EXPIRE: if a secondary server does not get a response from the primary server for this amount of time, it should stop responding to queries for the zone
+- __SRV (Service) Record__: specifies a host and port for specific services 
+  - SRV Record Contains:
+    - Transmission Protocol used
+    - Priority: prioritization of one server over another - the lower the value the more traffic
+    - Weight: priorization of one server over another with the same priority value
+- __PTR Record__: correlates domain names with IP address (opposite of the A reocrd)
+  - Used for reverse DNS lookups: query starts with the IP address and looks up the domain name
+- __KEY and DS Records__:
+  - __DNSSEC__: optional security protocol - adds cryptographic signatures to DNS records that can be checked to verify that a record came from the correct DNS server
+    - KEY Record: public signing key *private key is not on record
+    - DS Record: hash of KEY record
+- __SPF (Sender Policy Framework) Record__: lists all the servers authorized to send emails from a particular domain  
+- __DKIM (DomainKeys Identified Mail) Record__: method of email authentication that helps prevent spammers and other malicious parties from impersonating a legitmate domain
+- __DMARC (Domain-based Message Authentication Reporting and Conformance) Record__: method of authenticating email messages - tells a reciving email server what to do after checking a domain's SPF and DKIM - prevent email spoofing
+
+###### Types of Caching
+- __Browser DNS__: the closer the DNS caching occurs to the web browser, the fewer processing steps must be taken in order to check the cache and make the correct requests to an IP
+  - First location checked for DNS querys
+- __Operating System DNS__ (referred to as stub resovler): checks its own cache to see if ti has the record - if it does not then it sends a DNS query (with recursive flag set) outside of the local network
+  - Second stop for DNS query before request leaves machine
+
 #### Computer Communication Models
 - Computer Communication Models serve to standardize the coordination of communication between networked computing systems
 
